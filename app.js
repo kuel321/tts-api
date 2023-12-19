@@ -8,11 +8,11 @@ import cors from 'cors';
 const openai = new OpenAI();
 
 const speechFile = path.resolve("./speech.mp3");
-
+openai.api_key = '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'
 async function main(speechinput) {
   const mp3 = await openai.audio.speech.create({
     model: "tts-1",
-    voice: "alloy",
+    voice: "nova",
     input: speechinput,
   });
  
@@ -28,7 +28,11 @@ var PORT = 8125;
 app.listen(PORT, () => {
     console.log("Server Listening on PORT:", PORT);
   });
-  app.use(cors);
+  
+  app.get("/", (request, response) => {const status = {"status":"Working"};
+  console.log("accessed");
+  response.send(status); 
+});
   app.get("/speechcreate", (request, response) => {
     const status = {
         "status":"Working"
