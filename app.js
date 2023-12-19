@@ -8,7 +8,7 @@ import cors from 'cors';
 const openai = new OpenAI();
 
 const speechFile = path.resolve("./speech.mp3");
-openai.api_key = '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'
+openai.api_key = '';
 async function main(speechinput) {
   const mp3 = await openai.audio.speech.create({
     model: "tts-1",
